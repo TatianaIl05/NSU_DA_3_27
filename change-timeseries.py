@@ -174,7 +174,12 @@ def display(df: pd.DataFrame, category : List[str], kind : List[str], title : Li
     plt.show()
 
 
-def example_main_synthetic():
+def example_main_synthetic() -> None:
+    """
+    Строит синтетические данные
+        :returns
+            None
+    """
     input_df = create_periodic_dataframe(
         start_timedate_point="2025-09-16 02:35:00",
         periods=15, freq="14h"
@@ -188,8 +193,12 @@ def example_main_synthetic():
     display(result_df, ["weekday_name", "weekday_name"], ["bar", "pie"], ["Activity Count by Day of Week", "Days of the week"])
 
 
-
-def main_read_file(input_csv):
+def main_read_file(input_csv : str) -> None:
+    """
+    Строит таблицу и графики по данным
+        :returns
+            None
+    """
     input_df = load_dataframe_from_file(input_csv)
     transformed_df = convert_to_datetime(input_df)
     result_df = extract_parts(transformed_df)
@@ -222,3 +231,4 @@ if __name__ == "__main__":
         example_main_synthetic()
     elif args.file:
         main_read_file(args.file)
+        
